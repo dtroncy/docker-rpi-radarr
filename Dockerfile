@@ -25,4 +25,4 @@ EXPOSE 8989
 VOLUME /volumes/config /volumes/media
 
 ## Entrypoint to launch Radarr
-ENTRYPOINT ["mono","/opt/Radarr/Radarr.exe", "-nobrowswer", "-data=/volumes/config"]
+ENTRYPOINT ["mono","--debug", "/opt/Radarr/Radarr.exe", "-nobrowswer", "-data=/volumes/config"]
