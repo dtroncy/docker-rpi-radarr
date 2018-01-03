@@ -19,10 +19,10 @@ RUN apt-get update \
     && mkdir -p /volumes/config /volumes/media
 
 # forward Radarr logs to docker log collector
-RUN ln -sf /dev/stdout /volumes/config/logs/radarr.txt \
+RUN ln -sf /dev/stdout /volumes/config/logs/radarr.txt
 
 ## Expose port
-EXPOSE 8989
+EXPOSE 7878
 
 ## Volume for Radarr data
 VOLUME /volumes/config /volumes/media
