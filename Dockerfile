@@ -16,10 +16,10 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /opt/Radarr.develop.$radarr_version.linux.tar.gz \
-    && mkdir -p /volumes/config /volumes/media
-
-# forward Radarr logs to docker log collector
-RUN ln -sf /dev/stdout /volumes/config/logs/radarr.txt
+    && mkdir -p /volumes/config/logs /volumes/media \
+    && touch /volumes/config/logs/radarr.txt \
+    # forward Radarr logs to docker log collector
+    && ln -sf /dev/stdout /volumes/config/logs/radarr.txt
 
 ## Expose port
 EXPOSE 7878
