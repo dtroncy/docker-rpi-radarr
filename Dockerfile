@@ -18,6 +18,9 @@ RUN apt-get update \
     && rm -rf /opt/Radarr.develop.$radarr_version.linux.tar.gz \
     && mkdir -p /volumes/config /volumes/media
 
+# forward Radarr logs to docker log collector
+RUN ln -sf /dev/stdout /volumes/config/logs/radarr.txt \
+
 ## Expose port
 EXPOSE 8989
 
@@ -25,4 +28,4 @@ EXPOSE 8989
 VOLUME /volumes/config /volumes/media
 
 ## Entrypoint to launch Radarr
-ENTRYPOINT ["mono","--debug", "/opt/Radarr/Radarr.exe", "-nobrowswer", "-data=/volumes/config"]
+ENTRYPOINT ["mono", "/opt/Radarr/Radarr.exe", "-nobrowswer", "-data=/volumes/config"]
