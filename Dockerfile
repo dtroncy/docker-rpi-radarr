@@ -7,6 +7,7 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install libmono-cil-dev -y \
     && apt-get install wget \
+    && apt-get install mediainfo \
     && wget http://sourceforge.net/projects/bananapi/files/mono_3.10-armhf.deb \
     && dpkg -i mono_3.10-armhf.deb \
     && rm mono_3.10-armhf.deb \
@@ -16,10 +17,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /opt/Radarr.develop.$radarr_version.linux.tar.gz \
-    && mkdir -p /volumes/config/logs /volumes/media \
-    && touch /volumes/config/logs/radarr.txt \
-    # forward Radarr logs to docker log collector
-    && ln -sf /dev/stdout /volumes/config/logs/radarr.txt
+    && mkdir -p /volumes/config /volumes/media
 
 ## Expose port
 EXPOSE 7878
@@ -28,4 +26,4 @@ EXPOSE 7878
 VOLUME /volumes/config /volumes/media
 
 ## Entrypoint to launch Radarr
-ENTRYPOINT ["mono", "/opt/Radarr/Radarr.exe", "-nobrowswer", "-data=/volumes/config"]
+ENTRYPOINT ["mono", "--debug", "/opt/Radarr/Radarr.exe", "-nobrowswer", "-data=/volumes/config"]
