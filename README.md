@@ -12,7 +12,7 @@ $radarr_version is version of radarr you want to install.
 
 To run it (with image on docker hub) :
 
-    docker run -d -p 8989:8989 \
+    docker run -d -p 7878:7878 \
     -v /path_to_your_media_folder:/volumes/media \
     -v /path_to_your_config_folder:/volumes/config \
     -v /etc/localtime:/etc/localtime:ro \
