@@ -15,6 +15,7 @@ To run it (with image on docker hub) :
     docker run -d -p 7878:7878 \
     -v /path_to_your_media_folder:/volumes/media \
     -v /path_to_your_config_folder:/volumes/config \
+    -v /path_to_your_download_folder:/volumes/download \
     -v /etc/localtime:/etc/localtime:ro \
     --restart unless-stopped \
     --name radarr \
