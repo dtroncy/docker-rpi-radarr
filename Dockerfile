@@ -17,7 +17,10 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && rm -rf /opt/Radarr.develop.$radarr_version.linux.tar.gz \
-    && mkdir -p /volumes/config /volumes/media
+    && mkdir -p /volumes/config /volumes/media \
+    && chmod -R 777 /opt \
+    && chmod -R 777 /volumes/config \
+    && chmod -R 777 /volumes/media
 
 ## Expose port
 EXPOSE 7878
