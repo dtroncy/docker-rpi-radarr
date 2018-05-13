@@ -1,16 +1,13 @@
 # dtroncy/rpi-radarr
-FROM resin/rpi-raspbian
+FROM arm32v7/mono
 
 ARG radarr_version
 
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install libmono-cil-dev -y \
-    && apt-get install wget \
-    && apt-get install mediainfo \
-    && wget http://sourceforge.net/projects/bananapi/files/mono_3.10-armhf.deb \
-    && dpkg -i mono_3.10-armhf.deb \
-    && rm mono_3.10-armhf.deb \
+    && apt-get install wget -y\
+    && apt-get install mediainfo -y \
     && cd /opt \
     && wget --no-check-certificate https://github.com/Radarr/Radarr/releases/download/v$radarr_version/Radarr.develop.$radarr_version.linux.tar.gz \
     && tar -xvzf Radarr.develop.$radarr_version.linux.tar.gz \
