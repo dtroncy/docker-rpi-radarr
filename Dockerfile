@@ -1,5 +1,5 @@
 # dtroncy/rpi-radarr
-FROM arm32v7/mono
+FROM arm32v7/mono:5.2
 
 ARG radarr_version
 
