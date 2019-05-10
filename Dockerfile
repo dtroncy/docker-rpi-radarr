@@ -1,5 +1,5 @@
 # dtroncy/rpi-radarr
-FROM resin/rpi-raspbian
+FROM balenalib/rpi-raspbian
 
 ARG radarr_version
 
