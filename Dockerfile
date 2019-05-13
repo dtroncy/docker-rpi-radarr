@@ -4,9 +4,9 @@ FROM balenalib/rpi-raspbian
 ARG radarr_version
 
 RUN apt update \
-    && apt install apt-transport-https dirmngr -y \
+    && apt install apt-transport-https dirmngr gnupg ca-certificates -y \
     && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
-    && echo "deb https://download.mono-project.com/repo/debian stable-raspbianjessie main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list \
+    && echo "deb https://download.mono-project.com/repo/debian stable-raspbianstretch main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list \
     && apt update \
     && apt upgrade -y \
     && apt install wget -y \
