@@ -22,12 +22,12 @@ script:
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:latest --push .
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:$radarr_version --push .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:latest --push .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:$radarr_version --push .
     fi
 # if develop branch, build image and load it
   - >
     if [ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:latest --load .
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:$radarr_version --load .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:latest .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:$radarr_version .
     fi
