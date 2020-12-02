@@ -1,4 +1,5 @@
-sudo: required
+dist: xenial
+os: linux
 language: shell
 env:
   - radarr_version=3.0.0.4204
