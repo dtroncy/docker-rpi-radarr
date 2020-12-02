@@ -12,11 +12,11 @@ RUN apt update \
     && apt install wget -y \
     && apt install mediainfo -y \
     && apt install mono-devel -y \
-    && wget -P /opt --no-check-certificate https://github.com/Radarr/Radarr/releases/download/v$radarr_version/Radarr.develop.$radarr_version.linux.tar.gz \
-    && tar -xvzf /opt/Radarr.develop.$radarr_version.linux.tar.gz -C /opt \
+    && wget -P /opt --no-check-certificate https://github.com/Radarr/Radarr/releases/download/v$radarr_version/Radarr.master.$radarr_version.linux.tar.gz \
+    && tar -xvzf /opt/Radarr.master.$radarr_version.linux.tar.gz -C /opt \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && rm -rf /opt/Radarr.develop.$radarr_version.linux.tar.gz \
+    && rm -rf /opt/Radarr.master.$radarr_version.linux.tar.gz \
     && mkdir -p /volumes/config /volumes/media \
     && chmod -R 777 /opt \
     && chmod -R 777 /volumes/config \
