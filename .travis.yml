@@ -1,7 +1,8 @@
-sudo: required
-language: bash
+dist: xenial
+os: linux
+language: shell
 env:
-  - radarr_version=0.2.0.1480
+  - radarr_version=3.0.0.4204
 # install last docker version
 before_install:
   - sudo apt-get remove docker docker-engine docker.io containerd runc
