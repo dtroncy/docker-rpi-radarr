@@ -3,6 +3,7 @@ os: linux
 language: shell
 env:
   - radarr_version=3.0.2.4552
+
 # install last docker version
 before_install:
   - sudo apt-get remove docker docker-engine docker.io containerd runc
