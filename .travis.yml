@@ -2,8 +2,7 @@ dist: xenial
 os: linux
 language: shell
 env:
-  - radarr_version=3.0.2.4552
-
+  - radarr_version=3.2.0.5048
 # install last docker version
 before_install:
   - sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -12,6 +11,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 script:
+# Log to docker account
+  - docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
 # activate experimental docker feature
   - export DOCKER_CLI_EXPERIMENTAL=enabled
 # prepare qemu
@@ -23,7 +24,6 @@ script:
 # if master branch, build image and push it
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-      docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
       docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:latest --push .
       docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg radarr_version=$radarr_version -t dtroncy/rpi-radarr:$radarr_version --push .
     fi
